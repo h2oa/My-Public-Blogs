@@ -13,11 +13,11 @@ Check kiến trúc để tải đúng ver: https://github.com/frida/frida/releas
 "i386" or "i686" are the basic 32-bit x86 or the Pentium Pro variant respectively, which is Android's "x86" ABI.
 ```
 
-<img width="1078" height="287" alt="image" src="https://github.com/user-attachments/assets/b2d9cc7d-4018-48fc-be3a-8d6ded47feda" />
+<img width="1078" height="287" alt="image" src="https://github.com/user-attachments/assets/a8e38023-3966-4fae-8fd7-cf86ccfba3cd" />
 
 Frida server thường hay adb push vào `data/local/tmp` trong điện thoại, rồi chạy frida server lên thôi `./frida-server-name &`, dấu `&` để chạy ngầm:
 
-<img width="1184" height="276" alt="image" src="https://github.com/user-attachments/assets/62236a11-c55d-4e39-b576-0302f10ec3a2" />
+<img width="1184" height="276" alt="image" src="https://github.com/user-attachments/assets/858edc6d-a8ab-405e-92f2-948d7cfbd3be" />
 
 Forward port
 
@@ -46,7 +46,8 @@ Mở app lên và check các package apk đang chạy:
 frida-ps -Ua
 ```
 
-<img width="828" height="287" alt="image" src="https://github.com/user-attachments/assets/13e293e9-24f5-4b95-a5d1-067528ce9b75" />
+<img width="828" height="287" alt="image" src="https://github.com/user-attachments/assets/9ec1dc4b-46e5-4d4f-ab1e-0a8a1713fe84" />
+
 
 
 ## 2. Hook Java
@@ -57,9 +58,9 @@ Sử dụng jadx decompile apk > Chuột phải vào hàm cần hook > Copy as f
 
 Trong class MainActivity hay có đoạn code gọi thư viện `System.loadLibrary()` chính là đang gọi các lib `.so` Native. Như hình dưới thì gọi lib `hellojni.so` trong `Resources/lib/x86_64` (có thể gọi các lib khác tùy kiến trúc), lưu ý tên lib được ghép tiền tố lib vào:
 
-<img width="1721" height="974" alt="image" src="https://github.com/user-attachments/assets/2200c900-049b-4d27-87ea-ec8a79c02940" />
+<img width="825" height="437" alt="image" src="https://github.com/user-attachments/assets/cfa435a8-cbe6-4c15-897b-6777f2cffa70" />
 
-<img width="825" height="437" alt="image" src="https://github.com/user-attachments/assets/854f1ab0-c4e0-4f4f-aa41-25987ae13069" />
+<img width="1721" height="974" alt="image" src="https://github.com/user-attachments/assets/50c5cc8a-f484-461f-b1a7-25139b90f0e5" />
 
 API `Interceptor.attach` nhận tham số là địa chỉ của hàm cần hook trong bộ nhớ android, có 2 event:
 
@@ -86,11 +87,12 @@ Lệnh `nm` có thể lấy được offset address của hàm cần hook. Trư�
 nm --demangle --dynamic <đường-dẫn-tới-file-thư-viện>
 ```
 
-<img width="1460" height="519" alt="image" src="https://github.com/user-attachments/assets/cc476d35-4cc5-40a2-ae44-a116f53b7a9f" />
+<img width="1460" height="519" alt="image" src="https://github.com/user-attachments/assets/65790ad3-649a-484f-9655-8a5a7d7d9bee" />
+
 
 Lưu ý `nm` phải chạy đúng lib tương ứng với kiến trúc android, trong trường hợp này phải chạy với kiến trúc arm64-v8a (bảo sao nãy giờ so sánh hai phương pháp địa chỉ không giống nhau):
 
-<img width="1452" height="437" alt="image" src="https://github.com/user-attachments/assets/5d2b5594-5fde-47e6-92a9-0d52ba36340f" />
+<img width="1452" height="437" alt="image" src="https://github.com/user-attachments/assets/c8a4657f-22ea-4cfa-8b5a-711d5d0a294a" />
 
 Như hình trên thấy được offset của hàm stringFromJNI là 0x13c28.
 
@@ -165,7 +167,8 @@ Interceptor.attach(FuncAddr, {
 });
 ```
 
-<img width="1662" height="569" alt="image" src="https://github.com/user-attachments/assets/53cba7c9-6572-4e22-9867-5cd618e8412e" />
+<img width="1662" height="569" alt="image" src="https://github.com/user-attachments/assets/b2466c51-bdc3-477e-9f45-0b378e0af68c" />
+
 
 Chưa hiểu vì sao args 0 và 1 đều là "Hello from C++" …
 
