@@ -60,6 +60,25 @@ Add the token in Local Storage, I can access admin dashboard page:
 
 <img width="1262" height="507" alt="image" src="https://github.com/user-attachments/assets/a4ddca37-a8ce-4e7a-a652-edf247ff6a56" />
 
+# Try to develop a tool
+
+Scanning for an actuator path leak simply means fuzzing the path to see if there can access the actuator path.
+
+Advantages:
+
+- Many path scanning/fuzzing tools are available on the internet -> can refer to them.
+
+Disadvantages:
+
+- Actuator paths don't always directly access the root path; they often follow the base path. For example, `/devices-management/actuator/health` -> `/devices-management` is the base path, `/actutator/health` is the actuator fuzzing path -> need to fuzz these base paths first -> temporarily, the idea is to crawl via JavaScript.
+- Current tools all fuzz directly using wordlists. For the Viettel bug reported recently, no wordlist contained the complete `/devices-management/actuator/health` path -> need to crawl all the website paths and then fuzz the path using wordlists.
+- Not every response is correct; many cases are false positives, such as those encountered during a search. Accessing any path results in a 200 error instead of a 404/403/... -> response analysis is needed.
+- The wordlist needs to be compiled and customized based on experience.
+
+https://github.com/h2oa/ActuatorScan
+
+<img width="1416" height="112" alt="{BBF4BC6C-8D68-4FEA-A7A9-79826719DA86}" src="https://github.com/user-attachments/assets/5a5db3cc-85ba-4e1b-9c7b-b6fafcc8da7a" />
+
 # Note
 
 There are other exploitation methods based on the Actuator path leak, maybe I will try later.
