@@ -6,6 +6,6 @@ Ví dụ: https://viblo.asia/p/symmetric-ciphers-mat-ma-doi-xung-aes-phan-2-obA4
 
 # Tìm $K_0$ dựa vào $K_i$
 
-Lấy ví dụ AES-128, chúng ta biết rằng ở bước expand key, chúng ta mở rộng key thêm 10 phần, thu được $K_0$ (chính là secret key) đến $K_{10}$.
+Lấy ví dụ AES-128, chúng ta biết rằng ở bước expand key, key được mở rộng thêm 10 phần, thu được $K_0$ (chính là secret key) đến $K_{10}$.
 
 to be continue ...
