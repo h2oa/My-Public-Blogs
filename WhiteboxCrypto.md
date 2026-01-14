@@ -99,3 +99,32 @@ AddRoundKey(state, k_10)
 state -> ciphertext
 ```
 
+Khái niệm Tbox
+
+Gộp quá trình ShiftRows và AddRoundKey lại, với định nghĩa:
+
+<img width="759" height="101" alt="image" src="https://github.com/user-attachments/assets/d9ba0f4d-f4b7-4638-9da3-a38df402add4" />
+
+Có thể hiểu đơn giản mỗi Tbox là một giá trị ánh xạ của một byte trong state, với một state, tổng cộng có 160 ánh xạ như vậy.
+
+Khái niệm Tyi tables
+
+Trong các round từ 1-9, output sau khi đi qua ánh xạ Tbox, sẽ thực hiện MixColumns, cụ thể là phép toán với ma trận MC, lấy ví dụ 4 byte đầu tiên trong state 1:
+
+<img width="993" height="186" alt="image" src="https://github.com/user-attachments/assets/919ada3a-6067-44c0-af82-61967651a1d1" />
+
+Nếu sử dụng 4 ánh xạ Ty để biểu diễn 4 phép nhân:
+
+<img width="1064" height="166" alt="image" src="https://github.com/user-attachments/assets/3e359b6f-4875-4161-b612-a95cd1f92154" />
+
+Thì sau mỗi round là kết quả phép xor của 4 ánh xạ Ty:
+
+<img width="643" height="67" alt="image" src="https://github.com/user-attachments/assets/43a88018-0d6a-4ba1-8c5d-a7e1496df6c3" />
+
+Và tổng có 144 ánh xạ Ty như vậy (9 round, mỗi round 12 bảng), sau 9 round không có bước MixColumns
+
+... to be continued
+
+# Tham khảo
+
+https://eprint.iacr.org/2013/104.pdf
