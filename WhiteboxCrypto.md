@@ -123,7 +123,28 @@ Thì sau mỗi round là kết quả phép xor của 4 ánh xạ Ty:
 
 Và tổng có 144 ánh xạ Ty như vậy (9 round, mỗi round 12 bảng), sau 9 round không có bước MixColumns
 
-... to be continued
+Khái niệm XOR tables
+
+Mỗi phép xor trên có 2 input đều là 32 bit (4 byte). Định nghĩa một XOR table 4 bit x 4 bit. Như vậy mỗi phép XOR trên có thể chuyển đổi thành lookup 8 XOR table như vậy. Có 3 lần xor nên là cần 24 XOR table. Mỗi state có 4 cột, nên cần 24x3=96 XOR table trong mỗi round -> tất cả 9 round sẽ sinh ra 864 XOR table.
+
+Kết hợp lại:
+
+```
+state <- plaintext
+for r = 1 ... 9
+	ShiftRows
+	TBoxesTyiTables
+	XORTables
+ShiftRows
+TBoxes
+ciphertext <- state
+```
+
+<img width="1356" height="647" alt="{90250B93-C55C-4EB7-BDD4-21A71A6F0DAC}" src="https://github.com/user-attachments/assets/9dc81b85-67a8-4e67-a6b1-822447f3e54c" />
+
+# So với AES
+
+Trong AES, có nhiều yếu tố cố định như `rcon` trong bước expand key, Sbox trong bước SubBytes, ma trận MC trong bước MixColumns, khiến cho việc lộ secret giúp việc decrypt data dễ dàng. Đối với whitebox crypto, chúng ta có thể tự định nghĩa lại 3 yếu tố này: rcon, Sbox và ma trận MC. Như vậy attacker buộc phải thu thập toàn bộ các lookup table và hiểu được luồng hoạt động của thuật toán Whitebox crypto mới có thể decrypt data -> tăng rất nhiều độ khó của việc tấn công.
 
 # Tham khảo
 
