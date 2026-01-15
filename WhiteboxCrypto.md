@@ -146,6 +146,10 @@ ciphertext <- state
 
 Trong AES, có nhiều yếu tố cố định như `rcon` trong bước expand key, Sbox trong bước SubBytes, ma trận MC trong bước MixColumns, khiến cho việc lộ secret giúp việc decrypt data dễ dàng. Đối với whitebox crypto, chúng ta có thể tự định nghĩa lại 3 yếu tố này: rcon, Sbox và ma trận MC. Như vậy attacker buộc phải thu thập toàn bộ các lookup table và hiểu được luồng hoạt động của thuật toán Whitebox crypto mới có thể decrypt data -> tăng rất nhiều độ khó của việc tấn công.
 
+# DFA attack
+
+... to be continued
+
 # Tham khảo
 
 https://eprint.iacr.org/2013/104.pdf
