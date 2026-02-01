@@ -1,4 +1,4 @@
-<img width="1341" height="458" alt="image" src="https://github.com/user-attachments/assets/2586b075-d04a-4d58-8a5f-3796c5a4e0c1" /># Easy
+# Easy
 
 ## Cap
 
