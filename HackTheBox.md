@@ -90,4 +90,46 @@ Python 3.8 at `/usr/bin/python3.8` is found to have `cap_setuid` and `cap_net_bi
 
 <img width="1202" height="139" alt="{7CAED19A-93B3-4A95-B33A-DA7339F25104}" src="https://github.com/user-attachments/assets/2dc31ab4-6fac-46f4-952c-cd41ff1e1636" />
 
+## TwoMillion
+
+Nmap port scan
+
+<img width="1517" height="739" alt="{B27AAD2A-F7BC-42E8-A773-1955CDF7D754}" src="https://github.com/user-attachments/assets/98f6ce9b-bd01-47fc-a2f1-e703316dc1f9" />
+
+<img width="1308" height="410" alt="{D7BF12B3-F3EC-48E7-B0FB-3AF088C54C56}" src="https://github.com/user-attachments/assets/54281dfd-99b5-4dc0-ac29-25d160782505" />
+
+<img width="1413" height="629" alt="{CD240472-4850-48EE-BA25-69919A72E909}" src="https://github.com/user-attachments/assets/7704463d-d13b-4be9-a03c-f101be64af1a" />
+
+We need to modify the hosts file: `echo "10.129.229.66\t2million.htb" | sudo tee -a /etc/hosts`
+
+<img width="1169" height="213" alt="{92F7B97D-30AD-4E79-ADA3-BAECD3739EB7}" src="https://github.com/user-attachments/assets/8e83f66f-544c-4cd8-90b0-34f0a2d8f44b" />
+
+The website need a credential to login, and invite code to register
+
+<img width="1677" height="554" alt="{6FCF0515-22DC-4B6D-9EFC-2CC4A7D64B95}" src="https://github.com/user-attachments/assets/713a2558-d887-489c-9c42-bef71e268628" />
+
+Path scan `feroxbuster -u http://2million.htb/ --limit-bars 4 --no-state --filter-status 404` -> /register
+
+<img width="1720" height="671" alt="{802EA591-5FDF-4133-8DDD-EF4606AF309A}" src="https://github.com/user-attachments/assets/537d27f0-d06f-43f2-afaf-84e97e454d02" />
+
+Still need an invite code
+
+<img width="1795" height="720" alt="{1483B5E3-0026-4A5C-B55E-62B80F7B374C}" src="https://github.com/user-attachments/assets/7a0d9449-a6fb-4f0b-a5cd-a976ebfd86c8" />
+
+Run the function at `/js/inviteapi.min.js`
+
+<img width="1645" height="609" alt="{75E4E31D-1CEB-4114-9E09-287FD9569472}" src="https://github.com/user-attachments/assets/b1f19d97-da00-4f6d-9c41-22546781215e" />
+
+<img width="1586" height="595" alt="{127ACFDD-20E0-47DE-A5F2-CDDC4B481209}" src="https://github.com/user-attachments/assets/30b92381-6c66-45e5-affc-3da2b5c7b0b8" />
+
+<img width="1388" height="457" alt="{54C5EAAF-D216-49EC-B8F4-0403EC201B29}" src="https://github.com/user-attachments/assets/738df5b3-a1ec-4833-8271-eff26d2361ba" />
+
+<img width="1459" height="369" alt="{BC3AA646-6E35-4108-929B-0977E858E798}" src="https://github.com/user-attachments/assets/264ec2df-c898-48d5-ad86-e8393fe340e4" />
+
+Register a new account, /api/v1 leak the API list
+
+<img width="1305" height="572" alt="{68BE7BFB-5B44-461D-A219-2851E5F5149A}" src="https://github.com/user-attachments/assets/031aabac-6c1e-4f6f-85ed-bc03f283f04c" />
+
+<img width="1412" height="402" alt="{B887556B-D874-482A-8ACE-7D8230D5A09C}" src="https://github.com/user-attachments/assets/3e0a3d4f-6034-4706-affa-88bf73aebfc5" />
+
 ## 
